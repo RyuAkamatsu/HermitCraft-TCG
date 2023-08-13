@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "jsEngine": "hermes",
+    "name": "HermitCraft TCG",
+    "slug": "hermitcraft-tcg",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash_screen.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.stringerm.hermitcraft-tcg"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.stringerm.hermitcraft-tcg"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
