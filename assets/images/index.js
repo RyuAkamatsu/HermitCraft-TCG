@@ -1,5 +1,10 @@
-export const ARROW = require('./Arrow.png');
-export const ARROW_LEFT = require('./ArrowLeft.png');
-export const CHECK = require('./Check.png');
-export const CAMERA = require('./Camera.png');
-export const ROTATE = require('./Rotate.png');
+export const BALANCED_ICON = require('./Icons/Balanced.png');
+export const BUILDER_ICON = require('./Icons/Builder.png');
+export const EXPLORER_ICON = require('./Icons/Explorer.png');
+export const FARM_ICON = require('./Icons/Farm.png');
+export const MINER_ICON = require('./Icons/Miner.png');
+export const OBSIDIAN_ICON = require('./Icons/Obsidian.png');
+export const PVP_ICON = require('./Icons/PVP.png');
+export const REDSTONE_ICON = require('./Icons/Redstone.png');
+export const SPEEDRUNNER_ICON = require('./Icons/Speedrunner.png');
+export const TERRAFORMER_ICON = require('./Icons/Terraformer.png');

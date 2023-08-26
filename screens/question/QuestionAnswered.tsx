@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageBackground, ScrollView, StyleSheet, View } from 'react-native';
 import { ButtonWithIcon } from '../../components/common';
 import { Text } from '../../components/Themed';
-import { RootStackScreenProps } from '../../types';
+import { RootStackScreenProps } from '../../navigation/types';
 
 import Layout from '../../constants/Layout';
 import { FontSize } from '../../constants/Fonts';

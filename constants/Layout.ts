@@ -22,7 +22,7 @@ export default {
     },
     cardContainer: {
         flex            : 1,
-        marginHorizontal: -10
+        marginHorizontal: -20
     },
     labelStyle: {
         color     : Colors.Grey50,
@@ -56,7 +56,7 @@ export default {
             marginVertical: 5,
             minWidth      : 75
         },
-        iconContainer: { position: 'relative' },
+        iconContainer: { position: 'relative', justifyContent: 'center' },
         placeholder  : { color: Colors.TextColor },
 
         inputIOSContainer: {
@@ -75,13 +75,16 @@ export default {
 
         inputAndroidContainer: {
             flex           : 1,
-            paddingVertical: 20,
+            borderWidth    : 2,
+            borderColor    : Colors.Grey50,
+            marginTop      : 5,
+            paddingVertical: 10,
             paddingLeft    : 10,
-            paddingRight   : 5,
+            paddingRight   : 10,
             flexDirection  : 'row',
-            justifyContent : 'space-between'
+            justifyContent : 'space-between',
         },
-        inputAndroid            : { color: Colors.TextColor },
-        headlessAndroidContainer: {}
+        inputAndroid            : { color: Colors.TextColor, paddingRight: 15 },
+        headlessAndroidContainer: { }
     }
 };

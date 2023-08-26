@@ -8,7 +8,7 @@ import { useAppSelector } from '../../hooks/useRedux';
 import { executeTransaction } from '../../services/SQLClient';
 import { QuestionState } from '../../slices/QuestionSlice';
 
-import { RootStackScreenProps } from '../../types';
+import { RootStackScreenProps } from '../../navigation/types';
 import Layout from '../../constants/Layout';
 import { Fonts, FontSize } from '../../constants/Fonts';
 import Colors from '../../constants/Colors';

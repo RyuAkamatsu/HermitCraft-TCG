@@ -3,7 +3,6 @@ export * from './Button';
 export * from './ButtonWithIcon';
 export * from './CacheImage';
 export * from './CustomModal';
-export * from './DateOfBirthPicker';
 export * from './Error';
 export * from './Input';
 export * from './Message';

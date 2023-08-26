@@ -1,37 +1,43 @@
 {
   "expo": {
     "jsEngine": "hermes",
-    "name": "HermitCraft TCG",
+    "name": "Hermitcraft-TCG",
     "slug": "hermitcraft-tcg",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "myapp",
+    "platforms": ["android", "ios"],
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash_screen.png",
+      "image": "./assets/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
+      "backgroundColor": "#f25925"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.stringerm.hermitcraft-tcg"
+      "bundleIdentifier": "com.hermitcraft.tcg"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#a7a0a0"
       },
-      "package": "com.stringerm.hermitcraft-tcg"
+      "icon": "./assets/icon.png",
+      "package": "com.hermitcraft.tcg",
+      "googleServicesFile": "./google-services.json"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "plugins":  [
+      [
+        "expo-build-properties",
+        { "ios": { "useFrameworks": "static" } }
+      ]
+    ]
   }
 }

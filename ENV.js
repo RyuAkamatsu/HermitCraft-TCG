@@ -1,22 +1,22 @@
 import Constants from 'expo-constants';
 
+const DEV_TUNNEL = 'great-knives-accept.loca.lt';
+
 const ENV = {
-    local: { apiUrl: 'http://localhost:3090/api/v1/' },
-    dev  : { apiUrl: '' },
+    local: { apiUrl: `https://${DEV_TUNNEL}/api/app/v1` },
+    dev  : { apiUrl: 'https://pose-dev.sc-dev.co.uk/api/app/v1' },
     live : { apiUrl: '' }
 };
 
 const getEnvVars = () => {
 
-    // return 'http://192.168.1.68:21407/api/v1';
-    // return ENV.local;
+    // return ENV.dev;
 
-    // let env = Constants.manifest.releaseChannel || '';
     const env = (Constants && Constants.manifest && Constants.manifest.releaseChannel) || '';
 
     if (env.indexOf('dev') !== -1) return ENV.dev;
-    if (env.indexOf('live') !== -1) return ENV.live;
     if (env.indexOf('staging') !== -1) return ENV.live;
+    if (env.indexOf('live') !== -1) return ENV.live;
 
     return ENV.local;
 };

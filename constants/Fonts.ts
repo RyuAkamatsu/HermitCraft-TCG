@@ -1,8 +1,8 @@
 export const Fonts = {
-    Light   : 'Hind300',
-    Standard: 'Hind500',
-    Heavy   : 'Hind600',
-    Logo    : 'reem-kufi-fun'
+    Light   : 'minecraft',
+    Standard: 'minecraft',
+    Heavy   : 'minecraft',
+    Logo    : 'minecraft'
 };
 
 export const FontSize = {

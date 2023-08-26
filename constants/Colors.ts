@@ -1,21 +1,12 @@
-import {DarkTheme, DefaultTheme} from "@react-navigation/native";
+import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 
 export default {
-    light: {
-        text      : '#000',
-        background: '#fff',
-    },
-    dark: {
-        text      : '#fff',
-        background: '#000',
-    },
-
-    PrimaryColor  : '#f25925',
-    SecondaryColor: '#efddcc',
+    PrimaryColor  : '#36a9ae',
+    SecondaryColor: '#75c060',
 
     TextColor  : '#454545',
-    ButtonColor: '#f25925',
-    BorderColor: '#842708',
+    ButtonColor: '#36a9ae',
+    BorderColor: '#000',
 
     SuccessColor         : '#28a745',
     SecondarySuccessColor: '#cef3d7',

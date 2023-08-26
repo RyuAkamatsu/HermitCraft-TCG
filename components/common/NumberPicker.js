@@ -22,18 +22,11 @@ class NumberPicker extends Component {
     }
 
     render() {
-        const { value, field, save } = this.props;
+        const { value, save } = this.props;
         const { numbers } = this;
 
         return (
-            <View style={ButtonStyles.containerStyle}>
-                {/*<CustomPicker
-                    value={value ? [value] : null}
-                    field={field}
-                    onValueChange={save.bind(this)}
-                    default={numbers[0]}>
-                    {numbers.map(number => <Picker.Item key={number.toString()} label={number.toString()} value={number.toString()} />)}
-                    </CustomPicker>*/}
+            <View style={ ButtonStyles.containerStyle }>
                 <RNPickerSelect
                     onValueChange={ save.bind(this) }
                     items={ numbers.map(num => (
@@ -42,6 +35,8 @@ class NumberPicker extends Component {
                     value={ value ? [value] : null }
                     Icon={ () => <FontAwesome name="angle-down" size={ 18 } color="black" /> }
                     style={ Layout.pickerStyle }
+                    useNativeAndroidPickerStyle={ false }
+                    fixAndroidTouchableBug={ true }
                 />
             </View>
         );

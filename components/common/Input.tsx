@@ -15,11 +15,12 @@ interface Props {
     field: string,
     overrideStyle?: any,
     editable?: boolean,
-    behaviour?: 'text' | 'email' | 'username' | 'number' | 'phone' | 'password' | 'newPassword'
+    behaviour?: 'text' | 'email' | 'username' | 'number' | 'phone' | 'password' | 'newPassword',
+    maxLength?: number
 }
 
 // eslint-disable-next-line max-len
-function Input({ placeholder, value, onChangeText, secureTextEntry = false, keyboardType = 'default', halfWidth = false, field, overrideStyle = {}, editable = true, behaviour = 'text' }: Props) {
+function Input({ placeholder, value, onChangeText, secureTextEntry = false, keyboardType = 'default', halfWidth = false, field, overrideStyle = {}, editable = true, behaviour = 'text', maxLength = 1000 }: Props) {
 
     const { inputStyle } = InputStyles(editable);
 
@@ -83,6 +84,7 @@ function Input({ placeholder, value, onChangeText, secureTextEntry = false, keyb
             value={ currentValue }
             onChangeText={ v => setCurrentValue(v) }
             editable={ editable }
+            maxLength={ maxLength }
             { ...textInputProps }
         />
     );
