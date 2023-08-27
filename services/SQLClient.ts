@@ -47,7 +47,17 @@ db.transaction(tx => {
         'CREATE TABLE IF NOT EXISTS deckCards' +
         ' (id INTEGER PRIMARY KEY AUTOINCREMENT,' +
         ' deckId INTEGER NOT NULL REFERENCES myDecks(id),' +
-        ' cardId TEXT NOT NULL REFERENCES cards(id))'
+        ' cardId TEXT NOT NULL REFERENCES cards(id),' +
+        ' cardQuantity INTEGER DEFAULT 1)'
+    );
+});
+
+db.transaction(tx => {
+    tx.executeSql(
+        'CREATE TABLE IF NOT EXISTS myCollection' +
+        ' (id INTEGER PRIMARY KEY AUTOINCREMENT,' +
+        ' cardId TEXT NOT NULL REFERENCES cards(id),' +
+        ' cardQuantity INTEGER DEFAULT 0)'
     );
 });
 

@@ -31,7 +31,7 @@ function SortButton({ sortVal, onChange, items = [] }: Props) {
     );
 }
 
-export { SortButton };
+export default SortButton;
 
 const styles = StyleSheet.create({
     buttonContainer: {

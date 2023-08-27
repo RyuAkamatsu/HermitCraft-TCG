@@ -17,7 +17,7 @@ function SwitchBlock({ label, enabled, callback }: Props) {
         >
             <Text style={ styles.toggleButtonText }>{ label }</Text>
             <Switch
-                trackColor={{ true: Colors.PrimaryColor, false: Colors.SecondaryColor }}
+                trackColor={{ true: Colors.PrimaryColor, false: Colors.Grey70 }}
                 thumbColor={ enabled ? 'white' : Colors.Grey90 }
                 ios_backgroundColor={ Colors.SecondaryColor }
                 value={ enabled }
@@ -27,15 +27,12 @@ function SwitchBlock({ label, enabled, callback }: Props) {
     );
 }
 
-export { SwitchBlock };
+export default SwitchBlock;
 
 const styles = StyleSheet.create({
     toggleButton: {
         paddingVertical  : 15,
         paddingHorizontal: 20,
-        borderWidth      : 2,
-        borderColor      : Colors.Grey40,
-        borderRadius     : 15,
         marginVertical   : 10,
         flexDirection    : 'row',
         alignItems       : 'center',

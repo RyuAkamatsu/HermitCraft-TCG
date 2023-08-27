@@ -1,57 +1,58 @@
-import React from 'react';
-import { View, StyleSheet, Pressable, Image } from 'react-native';
-import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import React, { useEffect, useMemo, useState } from 'react';
+import { View, StyleSheet, Image } from 'react-native';
+
 import { Text } from './common/Themed';
-import { Fonts, FontSize } from '../constants/Fonts';
+import { QuantityChanger } from './common';
+
 import Colors from '../constants/Colors';
+import { executeTransaction } from '../services/SQLClient';
 
 interface Props {
     cardInfo: any
 }
 
-function CardThumb({ cardInfo } : Props) {
+function CardThumb({ cardInfo }: Props) {
+
+    const [quantity, setQuantity] = useState(cardInfo.Quantity);
+
+    useEffect(() => {
+        async function updateDBQuantity() {
+            await executeTransaction('UPDATE myCollection SET cardQuantity = ? WHERE id = ?', [cardInfo.Quantity, cardInfo.Id]);
+        }
+        updateDBQuantity();
+    }, [quantity]);
+
+    const quantityChanger = useMemo(() => (
+        <QuantityChanger
+            quantity={ quantity }
+            min={ 0 }
+            onChange={ (value:number) => setQuantity(value) }
+        />
+    ), [quantity]);
 
     return (
-        <View style={ styles.Container }>
-            <Text>Card code</Text>
-            <Image source={} />
-            <View>
-                <Pressable
-                    onPress={ () => decreaseQuantity() }
-                    style={ ({ pressed }) => ({ opacity: pressed ? 0.5 : 1, flexDirection: 'row', alignSelf: 'center' }) }
-                >
-                    <FontAwesome5
-                        name="minus"
-                        size={ 30 }
-                        color="white"
-                    />
-                </Pressable>
-                <Text>{ cardInfo.Quantity }</Text>
-                <Pressable
-                    onPress={ () => increaseQuantity() }
-                    style={ ({ pressed }) => ({ opacity: pressed ? 0.5 : 1, flexDirection: 'row', alignSelf: 'center' }) }
-                >
-                    <FontAwesome5
-                        name="plus"
-                        size={ 30 }
-                        color="white"
-                    />
-                </Pressable>
-            </View>
+        <View style={ styles.container }>
+            <Text>{ cardInfo.Code }</Text>
+            <Image
+                source={{ uri: cardInfo.uri }}
+                style={ [
+                    styles.imageStyle,
+                    { opacity: cardInfo.quantity > 0 ? 1 : 0.7 }
+                ] }
+            />
+            { quantityChanger }
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    iconContainer: {
-        marginTop  : 20,
-        paddingLeft: 5,
-        alignSelf  : 'flex-start',
-    },
-    backText: {
-        fontFamily: Fonts.Standard,
-        fontSize  : FontSize.Small
-    },
-});
+export default CardThumb;
 
-export { BackButton };
+const styles = StyleSheet.create({
+    container: {
+        flex           : 1,
+        backgroundColor: Colors.Grey50
+    },
+    imageStyle: {
+
+    }
+});

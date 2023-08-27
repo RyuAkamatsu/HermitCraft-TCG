@@ -1,2 +1,3 @@
 export * from './BackButton';
-export * from './SortButton';
+export { default as CardThumb } from './CardThumb';
+export { default as SortButton } from './SortButton';
