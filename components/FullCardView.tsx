@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
+import Modal from 'react-native-modal';
 
 import { Text } from './common/Themed';
 import { QuantityChanger } from './common';
@@ -8,12 +9,13 @@ import Colors from '../constants/Colors';
 import { executeTransaction } from '../services/SQLClient';
 
 interface Props {
+    isVisible: boolean,
     cardInfo: any
+    onHide: () => void
 }
 
-function CardThumb({ cardInfo }: Props) {
+function FullCardView({ isVisible, cardInfo, onHide }: Props) {
 
-    const [showCardModal, setShowCardModal] = useState(false);
     const [quantity, setQuantity] = useState(cardInfo.Quantity);
 
     useEffect(() => {
@@ -32,12 +34,13 @@ function CardThumb({ cardInfo }: Props) {
     ), [quantity]);
 
     return (
-        <View style={ styles.container }>
-            <Pressable
-                style={ ({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }] }
-                onPress={ () => setShowCardModal(!showCardModal) }
-            >
-                <Text>{ cardInfo.Code }</Text>
+        <Modal
+            isVisible={ isVisible }
+            backdropOpacity={ 0.4 }
+            onBackdropPress={ onHide }
+        >
+            <View style={ styles.container }>
+                <Text>{ cardInfo.Name }</Text>
                 <Image
                     source={{ uri: cardInfo.uri }}
                     style={ [
@@ -45,18 +48,13 @@ function CardThumb({ cardInfo }: Props) {
                         { opacity: cardInfo.quantity > 0 ? 1 : 0.7 }
                     ] }
                 />
-            </Pressable>
-            { quantityChanger }
-            <FullCardView
-                isVisible={ showCardModal }
-                cardInfo={ cardInfo }
-                onHide={ () => setShowCardModal(false) }
-            />
-        </View>
+                { quantityChanger }
+            </View>
+        </Modal>
     );
 }
 
-export default CardThumb;
+export default FullCardView;
 
 const styles = StyleSheet.create({
     container: {

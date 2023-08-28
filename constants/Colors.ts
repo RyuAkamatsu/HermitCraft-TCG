@@ -1,4 +1,4 @@
-import { DarkTheme, DefaultTheme } from "@react-navigation/native";
+import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 
 export default {
     PrimaryColor  : '#36a9ae',

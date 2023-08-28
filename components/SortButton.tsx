@@ -35,9 +35,9 @@ export default SortButton;
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        flexDirection: 'row',
+        flexDirection    : 'row',
         paddingHorizontal: 0,
-        marginBottom: 10
+        marginBottom     : 10
     },
     pickerStyle: {
         viewContainer: {
