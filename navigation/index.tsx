@@ -6,6 +6,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Collection from '../screens/collection/Collection';
 
 import { RootTabParamList, SearchStackParamList, InfoStackParamList, DecksStackParamList } from './types';
+import HermitType from '../screens/search/HermitType';
+import SearchHome from '../screens/search/SearchHome';
+import AdvancedSearch from '../screens/search/AdvancedSearch';
 
 export default function Navigation() {
     return (
@@ -36,6 +39,7 @@ function SearchNavigator() {
     return (
         <SearchStack.Navigator>
             <SearchStack.Screen name="SearchHome" component={ SearchHome } />
+            <SearchStack.Screen name="HermitType" component={ HermitType } />
             <SearchStack.Screen name="AdvancedSearch" component={ AdvancedSearch } />
             <SearchStack.Screen name="SearchResults" component={ SearchResults } />
         </SearchStack.Navigator>

@@ -28,6 +28,7 @@ export type SearchStackScreenProps<Screen extends keyof SearchStackParamList> = 
 
 export type SearchStackParamList = {
     SearchHome: undefined;
+    HermitTypes: undefined;
     AdvancedSearch: undefined;
     SearchResults: undefined;
 };

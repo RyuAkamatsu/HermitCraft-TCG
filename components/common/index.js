@@ -8,7 +8,7 @@ export * from './Input';
 export * from './Message';
 // export * from './InputWithButton';
 // export * from './ResponsiveImage';
-export * from './MultipleChoice';
+export { default as MultipleChoice } from './MultipleChoice';
 export { default as PressableButton } from './PressableButton';
 export { default as QuantityChanger } from './QuantityChanger';
 export * from './RenderWYSIWYG';

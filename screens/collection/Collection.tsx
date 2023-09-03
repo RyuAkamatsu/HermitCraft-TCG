@@ -174,15 +174,21 @@ function Collection({ navigation }: RootTabScreenProps<'MyCollection'>) {
     useFocusEffect(() => {
         async function getData() {
             const collectionData = await executeTransaction(
-                'SELECT * FROM myCollection WHERE cardQuantity > ? INNER JOIN cards ON myCollection.cardId = cards.id',
-                [showOwnedOnly]
+                'SELECT * FROM cards INNER JOIN myCollection ON myCollection.cardId = cards.id',
+                []
             );
 
             const cardArray = collectionData.rows._array;
 
-            setHermitData(cardArray.filter((card: { cardType: string; }) => card.cardType === 'Hermit'));
-            setEffectData(cardArray.filter((card: { cardType: string; }) => card.cardType === 'Effect'));
-            setItemData(cardArray.filter((card: { cardType: string; }) => card.cardType === 'Item'));
+            setHermitData(cardArray.filter(
+                (card: { cardType: string; cardQuantity: number; }) => card.cardType === 'Hermit' && (!showOwnedOnly || card.cardQuantity > 0)
+            ));
+            setEffectData(cardArray.filter(
+                (card: { cardType: string; cardQuantity: number; }) => card.cardType === 'Effect' && (!showOwnedOnly || card.cardQuantity > 0)
+            ));
+            setItemData(cardArray.filter(
+                (card: { cardType: string; cardQuantity: number; }) => card.cardType === 'Item' && (!showOwnedOnly || card.cardQuantity > 0)
+            ));
         }
         getData();
     });

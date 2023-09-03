@@ -8,11 +8,10 @@ import Colors from '../../constants/Colors';
 interface Props {
     placeholder: string,
     value: string,
-    onChangeText: (field: string, value: string) => void,
+    onChangeText: (value: string) => void,
     secureTextEntry?: boolean,
     keyboardType?: KeyboardTypeOptions,
     halfWidth?: boolean,
-    field: string,
     overrideStyle?: any,
     editable?: boolean,
     behaviour?: 'text' | 'email' | 'username' | 'number' | 'phone' | 'password' | 'newPassword',
@@ -20,7 +19,7 @@ interface Props {
 }
 
 // eslint-disable-next-line max-len
-function Input({ placeholder, value, onChangeText, secureTextEntry = false, keyboardType = 'default', halfWidth = false, field, overrideStyle = {}, editable = true, behaviour = 'text', maxLength = 1000 }: Props) {
+function Input({ placeholder, value, onChangeText, secureTextEntry = false, keyboardType = 'default', halfWidth = false, overrideStyle = {}, editable = true, behaviour = 'text', maxLength = 1000 }: Props) {
 
     const { inputStyle } = InputStyles(editable);
 
@@ -28,7 +27,7 @@ function Input({ placeholder, value, onChangeText, secureTextEntry = false, keyb
 
     useEffect(() => {
         if (onChangeText) {
-            onChangeText(field, currentValue);
+            onChangeText(currentValue);
         }
     }, [currentValue]);
 
@@ -41,8 +40,6 @@ function Input({ placeholder, value, onChangeText, secureTextEntry = false, keyb
     const textInputProps: TextInputProps = { keyboardType };
 
     switch (behaviour) {
-        case 'text':
-            break;
         case 'number':
             textInputProps.keyboardType = 'numeric';
             break;

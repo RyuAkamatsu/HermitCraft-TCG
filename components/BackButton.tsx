@@ -4,6 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Text } from './common/Themed';
 import { Fonts, FontSize } from '../constants/Fonts';
 import Colors from '../constants/Colors';
+import { PressableButton } from './common';
 
 interface Props {
     navigation: any,
@@ -11,13 +12,13 @@ interface Props {
     color?: string
 }
 
-function BackButton({ navigation, text = 'Back', color = Colors.TextColor } : Props) {
+function BackButton({ navigation, text, color = Colors.TextColor } : Props) {
 
     return (
         <View style={ styles.iconContainer }>
-            <Pressable
+            <PressableButton
                 onPress={ () => navigation.goBack(null) }
-                style={ ({ pressed }) => ({ opacity: pressed ? 0.5 : 1, flexDirection: 'row', alignSelf: 'center' }) }
+                style={{ flexDirection: 'row', alignSelf: 'center' }}
             >
                 <MaterialIcons
                     name="arrow-left"
@@ -25,8 +26,8 @@ function BackButton({ navigation, text = 'Back', color = Colors.TextColor } : Pr
                     color={ color }
                     style={{ marginTop: -3 }}
                 />
-                <Text style={{ ...styles.backText, color }}>{ text }</Text>
-            </Pressable>
+                { text && <Text style={{ ...styles.backText, color }}>{ text }</Text> }
+            </PressableButton>
         </View>
     );
 }

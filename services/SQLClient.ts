@@ -20,11 +20,11 @@ db.transaction(tx => {
         ' health INTEGER, ' +
         ' primaryAttackName TEXT, ' +
         ' primaryAttackCost TEXT, ' +
-        ' primaryAttackValue INTEGER, ' +
+        ' primaryAttackPower INTEGER, ' +
         ' primaryAttackDescription TEXT, ' +
         ' secondaryAttackName TEXT, ' +
         ' secondaryAttackCost TEXT,' +
-        ' secondaryAttackValue INTEGER, ' +
+        ' secondaryAttackPower INTEGER, ' +
         ' secondaryAttackDescription TEXT, ' +
         ' tags TEXT, ' +
         ' errata TEXT, ' +
