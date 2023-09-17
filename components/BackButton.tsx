@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Pressable } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Text } from './common/Themed';
-import { Fonts, FontSize } from '../constants/Fonts';
-import Colors from '../constants/Colors';
 import { PressableButton } from './common';
+
+import { Colors, Fonts, FontSize } from '../constants';
 
 interface Props {
     navigation: any,
@@ -39,9 +38,11 @@ const styles = StyleSheet.create({
         alignSelf  : 'flex-start',
     },
     backText: {
-        fontFamily: Fonts.Standard,
-        fontSize  : FontSize.Small
+        fontFamily  : Fonts.Standard,
+        fontSize    : FontSize.Medium,
+        paddingRight: 15,
+        paddingVertical: 10
     },
 });
 
-export { BackButton };
+export default BackButton;

@@ -12,7 +12,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#f25925"
+      "backgroundColor": "#36a9ae"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -27,8 +27,7 @@
         "backgroundColor": "#a7a0a0"
       },
       "icon": "./assets/icon.png",
-      "package": "com.hermitcraft.tcg",
-      "googleServicesFile": "./google-services.json"
+      "package": "com.hermitcraft.tcg"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"

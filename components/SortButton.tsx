@@ -2,8 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
-import Colors from '../constants/Colors';
-import { Fonts, FontSize } from '../constants/Fonts';
+import { Colors, Fonts, FontSize } from '../constants';
 
 interface Props {
     sortVal: string,

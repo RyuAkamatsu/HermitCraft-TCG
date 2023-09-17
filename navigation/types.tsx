@@ -28,9 +28,9 @@ export type SearchStackScreenProps<Screen extends keyof SearchStackParamList> = 
 
 export type SearchStackParamList = {
     SearchHome: undefined;
-    HermitTypes: undefined;
+    HermitType: undefined;
     AdvancedSearch: undefined;
-    SearchResults: undefined;
+    SearchResults: any;
 };
 
 export type DecksStackScreenProps<Screen extends keyof DecksStackParamList> = CompositeScreenProps<NativeStackScreenProps<DecksStackParamList, Screen>,

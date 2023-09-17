@@ -1,54 +1,36 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 
-import Colors from '../../constants/Colors';
-import { Fonts, FontSize } from '../../constants/Fonts';
+import { Colors } from '../../constants';
 
 interface Props {
     onPress: () => void,
-    upperCase?: boolean,
     backgroundColor?: string | null,
-    overrideContainerStyle?: object,
     disabled?: boolean
 }
 
-function Button({ onPress, children, upperCase = false, backgroundColor = null, overrideContainerStyle = {}, disabled = false }: React.PropsWithChildren<Props>) {
+function Button({ onPress, children, backgroundColor = null, disabled = false }: React.PropsWithChildren<Props>) {
 
-    const text = upperCase === true && typeof children === 'string' ? children.toUpperCase() : children;
-    const { containerStyle, buttonStyle, textStyle } = ButtonStyles;
-    const bg = disabled ? Colors.Grey70 : (backgroundColor ?? buttonStyle.backgroundColor);
+    const { buttonStyle } = ButtonStyles;
+    const bg = disabled ? Colors.Grey70 : (backgroundColor ?? Colors.ButtonColor);
 
     return (
-        <View style={{ ...containerStyle, ...overrideContainerStyle }}>
-            <Pressable
-                style={ ({ pressed }) => [{ ...buttonStyle, backgroundColor: bg, opacity: pressed ? 0.5 : 1.0 }] }
-                onPress={ onPress }
-                disabled={ disabled }
-            >
-                <View style={{ justifyContent: 'center' }}>
-                    <Text style={ textStyle }>{text}</Text>
-                </View>
-            </Pressable>
-        </View>
+        <Pressable
+            style={ ({ pressed }) => [{ ...buttonStyle, backgroundColor: bg, opacity: pressed ? 0.5 : 1.0 }] }
+            onPress={ onPress }
+            disabled={ disabled }
+        >
+            { children }
+        </Pressable>
     );
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { Button };
+export default Button;
 
 const ButtonStyles = StyleSheet.create({
-    containerStyle: { alignSelf: 'stretch' },
-    buttonStyle   : {
-        flexDirection  : 'row',
-        backgroundColor: Colors.ButtonColor,
-        justifyContent : 'center',
-        borderRadius   : 40
-    },
-    textStyle: {
-        alignSelf : 'center',
-        color     : 'white',
-        fontSize  : FontSize.Small,
-        fontFamily: Fonts.Light,
-        padding   : 15
+    buttonStyle: {
+        flexDirection : 'row',
+        justifyContent: 'center',
+        borderRadius  : 40
     }
 });

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { Fonts, FontSize } from '../../constants/Fonts';
-import Colors from '../../constants/Colors';
+import { Colors, Fonts, FontSize } from '../../constants';
 
 interface Props {
     type ?: 'Success' | 'Error',
@@ -12,29 +11,23 @@ interface Props {
 
 function Message({ type = 'Error', heading = null, text = null, onPress }: Props) {
 
-    const { containerStyle, headingText, messageText } = styles(type);
+    const {
+        containerStyle,
+        headingText,
+        messageText
+    } = styles(type);
 
-    if (onPress) {
-        return (
-            <TouchableOpacity onPress={ onPress }>
-                <View style={ containerStyle }>
-                    { heading && <Text style={ headingText }>{ heading }</Text> }
-                    <Text style={ messageText }>{ text }</Text>
-                </View>
-            </TouchableOpacity>
-        );
-    }
-
-    return (
+    const messageContainer = (
         <View style={ containerStyle }>
             { heading && <Text style={ headingText }>{ heading }</Text> }
             <Text style={ messageText }>{ text }</Text>
         </View>
     );
+
+    return onPress ? <TouchableOpacity onPress={ onPress }>{ messageContainer }</TouchableOpacity> : messageContainer;
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { Message };
+export default Message;
 
 const styles = (type: string) => StyleSheet.create({
     containerStyle: {

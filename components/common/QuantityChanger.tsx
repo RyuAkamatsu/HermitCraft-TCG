@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-import { PressableButton } from './index';
-import { Text } from './Themed';
+import PressableButton from './PressableButton';
 
 interface Props {
     quantity: number,

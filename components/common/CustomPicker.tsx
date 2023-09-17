@@ -6,8 +6,7 @@ import { CustomPicker as CPicker } from 'react-native-custom-picker';
 import { flatten, flattenDeep, get } from 'lodash';
 import { FontAwesome } from '@expo/vector-icons';
 
-import Colors from '../../constants/Colors';
-import { Fonts, FontSize } from '../../constants/Fonts';
+import { Colors, Fonts, FontSize } from '../../constants';
 
 interface Props {
     placeholder?: string
@@ -152,8 +151,7 @@ function CustomPicker({ placeholder, value, defaultVal, onChange, children }: Pr
     );
 }
 
-export { CustomPicker };
-
+export default CustomPicker;
 
 const styles = {
     pickerContainer: {

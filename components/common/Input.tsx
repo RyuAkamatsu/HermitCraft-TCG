@@ -87,7 +87,7 @@ function Input({ placeholder, value, onChangeText, secureTextEntry = false, keyb
     );
 }
 
-export { Input };
+export default Input;
 
 export const InputStyles = (editable: boolean) => StyleSheet.create({
     inputStyle: {

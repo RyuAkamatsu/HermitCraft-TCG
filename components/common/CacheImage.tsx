@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
 import { CacheManager } from 'react-native-expo-image-cache';
-import { Nullable } from '../../slices/types';
 
-export default function CacheImage(props: any) {
-    const [imgURI, setImgURI] = useState(null as Nullable<string>);
+function CacheImage(props: any) {
+    const [imgURI, setImgURI] = useState(null as string|null);
 
     useEffect(() => {
         async function getCacheImage() {
@@ -39,3 +38,5 @@ export default function CacheImage(props: any) {
         />
     );
 }
+
+export default CacheImage;

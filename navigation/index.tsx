@@ -9,6 +9,7 @@ import { RootTabParamList, SearchStackParamList, InfoStackParamList, DecksStackP
 import HermitType from '../screens/search/HermitType';
 import SearchHome from '../screens/search/SearchHome';
 import AdvancedSearch from '../screens/search/AdvancedSearch';
+import SearchResults from '../screens/search/SearchResults';
 
 export default function Navigation() {
     return (
@@ -26,7 +27,11 @@ const InfoStack = createNativeStackNavigator<InfoStackParamList>();
 function RootNavigator() {
 
     return (
-        <Tabs.Navigator>
+        <Tabs.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
             <Tabs.Screen name="Search" component={ SearchNavigator } />
             <Tabs.Screen name="MyCollection" component={ Collection } />
             <Tabs.Screen name="MyDecks" component={ DeckNavigator } />
@@ -37,7 +42,11 @@ function RootNavigator() {
 
 function SearchNavigator() {
     return (
-        <SearchStack.Navigator>
+        <SearchStack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
             <SearchStack.Screen name="SearchHome" component={ SearchHome } />
             <SearchStack.Screen name="HermitType" component={ HermitType } />
             <SearchStack.Screen name="AdvancedSearch" component={ AdvancedSearch } />

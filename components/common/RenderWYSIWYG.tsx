@@ -2,15 +2,14 @@ import React from 'react';
 import { ScrollView, useWindowDimensions } from 'react-native';
 import RenderHtml from 'react-native-render-html';
 
-import Layout from '../../constants/Layout';
-import { Fonts } from '../../constants/Fonts';
+import { Layout } from '../../constants';
 
-const mixedStyles = {
+/* const mixedStyles = {
     h2: { fontFamily: Fonts.Heavy },
     p   : { fontFamily: Fonts.Standard }
-};
+}; */
 
-function RenderWYSIWYG({ text = '' } : { text: string }) {
+function RenderWYSIWYG({ text = '', mixedStyles = {} } : { text: string, mixedStyles: any }) {
 
     const { width } = useWindowDimensions();
 
@@ -30,4 +29,4 @@ function RenderWYSIWYG({ text = '' } : { text: string }) {
     ));
 }
 
-export { RenderWYSIWYG };
+export default RenderWYSIWYG;

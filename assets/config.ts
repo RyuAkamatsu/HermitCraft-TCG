@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
 import { CardContentProps } from './types';
-import Colors from '../constants/Colors';
+import { Colors } from '../constants';
 
 const windowHeight = Dimensions.get('window').height;
 

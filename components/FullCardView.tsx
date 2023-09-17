@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { Text } from './common/Themed';
 import { QuantityChanger } from './common';
 
-import Colors from '../constants/Colors';
 import { executeTransaction } from '../services/SQLClient';
+
+import { Colors } from '../constants';
 
 interface Props {
     isVisible: boolean,

@@ -11,6 +11,7 @@ import Navigation from './navigation';
 import { loadFonts, cacheImages } from './hooks/useCachedResources';
 
 export default function App() {
+
     const colorScheme = useColorScheme();
 
     const images = [require('./assets/splash.png')];

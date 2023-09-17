@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TouchableOpacity, View } from 'react-native';
-import { Fonts, FontSize } from '../../constants/Fonts';
-import Colors from '../../constants/Colors';
 import { Checkbox } from 'expo-checkbox';
+import { Colors, Fonts, FontSize } from '../../constants';
 
 interface Props {
     options: {
@@ -61,7 +60,9 @@ function MultipleChoice({ options, values = [], layout = 'Boxes', oneOption = fa
                 }
             </View>
         );
-    } else if (layout === 'Checkboxes') {
+    }
+
+    if (layout === 'Checkboxes') {
         return (
             <View style={ styles.checkboxesContainer }>
                 {
@@ -72,17 +73,17 @@ function MultipleChoice({ options, values = [], layout = 'Boxes', oneOption = fa
                             <Checkbox
                                 style={{ margin: 8 }}
                                 value={ selectedValues.includes(opt.value) }
-                                color={ selectedValues.includes(opt.value) ? '#4630EB' : undefined}
+                                color={ selectedValues.includes(opt.value) ? '#4630EB' : undefined }
                             />
                             <Text style={ styles.optionText }>{opt.text}</Text>
                         </Pressable>
                     ))
                 }
             </View>
-        )
-    } else {
-        return null;
+        );
     }
+
+    return null;
 }
 
 export default MultipleChoice;

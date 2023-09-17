@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { Text } from './common/Themed';
 import { QuantityChanger } from './common';
+import FullCardView from './FullCardView';
 
-import Colors from '../constants/Colors';
 import { executeTransaction } from '../services/SQLClient';
+
+import { Colors } from '../constants';
 
 interface Props {
     cardInfo: any

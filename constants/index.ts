@@ -1,7 +1,21 @@
-export * from './Colors';
-export * from './Layout';
+export { default as Colors } from './Colors';
+export { Fonts, FontSize } from './Fonts';
+export { default as Layout } from './Layout';
 
-export const CARD_TYPES = ['Hermits', 'Effects', 'Items'];
+export const CARD_TYPES = [
+    {
+        Name : 'Hermits',
+        Image: require('../assets/images/Buttons/Hermits.png')
+    },
+    {
+        Name : 'Effects',
+        Image: require('../assets/images/Buttons/Effects.png')
+    },
+    {
+        Name : 'Items',
+        Image: require('../assets/images/Buttons/Items.png')
+    },
+];
 export const RARITIES = ['Ultra Rare', 'Rare', 'Uncommon', 'Common', 'Error'];
 export const TAGS = ['Attach', 'Single-use', 'Alter Ego'];
 export const ITEM_TYPES = [

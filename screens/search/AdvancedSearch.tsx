@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { BackButton } from '../../components';
 import { Input, MultipleChoice, PressableButton } from '../../components/common';
-import { Text } from '../../components/Themed';
 
 import { SearchStackScreenProps } from '../../navigation/types';
-import { Fonts, FontSize } from '../../constants/Fonts';
-import { CARD_TYPES, ITEM_TYPES, RARITIES, TAGS } from '../../constants';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { BackButton } from '../../components';
-import { FontAwesome5 } from '@expo/vector-icons';
+
+import {
+    Fonts,
+    FontSize,
+    CARD_TYPES,
+    ITEM_TYPES,
+    RARITIES,
+    TAGS
+} from '../../constants';
 
 const cardTypeArr = CARD_TYPES.map(type => ({ text: type, value: type }));
 const itemTypeArr = ITEM_TYPES.map(type => ({ text: type.Name, value: type.Name }));
@@ -32,6 +38,10 @@ function AdvancedSearch({ navigation }: SearchStackScreenProps<'AdvancedSearch'>
     const [secondaryCost, setSecondaryCost] = useState<number[]>([]);
     const [secondaryPower, setSecondaryPower] = useState<number[]>([]);
     const [tags, setTags] = useState<string[]>([]);
+
+    function navigateToSearch() {
+        navigation.navigate('SearchResults');
+    }
 
     return (
         <View style={{ flex: 1, gap: 10 }}>
@@ -153,7 +163,7 @@ function AdvancedSearch({ navigation }: SearchStackScreenProps<'AdvancedSearch'>
                 </View>
             </KeyboardAwareScrollView>
             <View>
-                <PressableButton onPress={}>
+                <PressableButton onPress={ navigateToSearch }>
                     <Text>Search</Text>
                     <FontAwesome5
                         name="search"

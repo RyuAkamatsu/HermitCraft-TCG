@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import CustomPicker from './CustomPicker';
-import {ButtonStyles} from "../../../styles";
+import { ButtonStyles } from '../../../styles';
 import RNPickerSelect from 'react-native-picker-select';
 import { FontAwesome } from '@expo/vector-icons';
 import Layout from '../../constants/Layout';

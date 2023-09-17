@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 
-import Colors from '../../constants/Colors';
+import { Colors } from '../../constants';
 
 interface Props {
     onPress: () => void,
