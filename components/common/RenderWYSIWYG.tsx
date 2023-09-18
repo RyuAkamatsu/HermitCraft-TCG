@@ -18,7 +18,6 @@ function RenderWYSIWYG({ text = '', mixedStyles = {} } : { text: string, mixedSt
             keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
             showsVerticalScrollIndicator={ false }
-            style={ Layout.pageContainer }
         >
             <RenderHtml
                 contentWidth={ width - 20 }

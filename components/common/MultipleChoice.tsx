@@ -10,12 +10,12 @@ interface Props {
         default?: boolean
     }[],
     values: string[] | number[],
-    layout: 'Boxes' | 'Checkboxes',
+    layout: 'List' | 'Checkboxes',
     oneOption?: boolean,
     save: (values: any[]) => void
 }
 
-function MultipleChoice({ options, values = [], layout = 'Boxes', oneOption = false, save }: Props) {
+function MultipleChoice({ options, values = [], layout = 'List', oneOption = false, save }: Props) {
 
     const initialVal = values.length > 0 ?
         values :
@@ -30,7 +30,6 @@ function MultipleChoice({ options, values = [], layout = 'Boxes', oneOption = fa
     }, [selectedValues]);
 
     function makeSelection(val: string) {
-
         if (selectedValues.includes(val)) {
             const idx = selectedValues.findIndex(selectedVal => selectedVal === val);
             setSelectedValues(selectedValues.splice(idx, 1));
@@ -41,7 +40,7 @@ function MultipleChoice({ options, values = [], layout = 'Boxes', oneOption = fa
         }
     }
 
-    if (layout === 'Boxes') {
+    if (layout === 'List') {
         return (
             <View style={ styles.boxesContainer }>
                 {
@@ -69,13 +68,14 @@ function MultipleChoice({ options, values = [], layout = 'Boxes', oneOption = fa
                     options.map(opt => (
                         <Pressable
                             onPress={ () => makeSelection(opt.value) }
+                            style={{ flex: 1, flexDirection: 'row', margin: 5, gap: 10 }}
                         >
                             <Checkbox
-                                style={{ margin: 8 }}
+                                style={{ margin: 8, padding: 10 }}
                                 value={ selectedValues.includes(opt.value) }
                                 color={ selectedValues.includes(opt.value) ? '#4630EB' : undefined }
                             />
-                            <Text style={ styles.optionText }>{opt.text}</Text>
+                            <Text style={ styles.optionText }>{ opt.text }</Text>
                         </Pressable>
                     ))
                 }
@@ -93,7 +93,7 @@ const styles = {
 
     },
     checkboxesContainer: {
-
+        flex: 1,
     },
     multipleChoiceOption: {
         backgroundColor: 'white',
@@ -105,7 +105,7 @@ const styles = {
     optionText: {
         paddingVertical: 10,
         fontFamily     : Fonts.Standard,
-        fontSize       : FontSize.Small,
+        fontSize       : FontSize.Large,
         color          : Colors.TextColor
     },
     selectedOption: {

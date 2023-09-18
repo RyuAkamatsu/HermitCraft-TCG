@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { BackButton } from '../../components';
 import { Input, MultipleChoice, PressableButton } from '../../components/common';
 
@@ -10,13 +11,14 @@ import { SearchStackScreenProps } from '../../navigation/types';
 import {
     Fonts,
     FontSize,
+    Layout,
+    TAGS,
     CARD_TYPES,
     ITEM_TYPES,
     RARITIES,
-    TAGS
 } from '../../constants';
 
-const cardTypeArr = CARD_TYPES.map(type => ({ text: type, value: type }));
+const cardTypeArr = CARD_TYPES.map(type => ({ text: type.Name, value: type.Name }));
 const itemTypeArr = ITEM_TYPES.map(type => ({ text: type.Name, value: type.Name }));
 const rarityArr = RARITIES.map(rarity => ({ text: rarity, value: rarity }));
 const healthArr = [250, 260, 270, 280, 290, 300].map(health => ({ text: health.toString(), value: health }));
@@ -44,7 +46,7 @@ function AdvancedSearch({ navigation }: SearchStackScreenProps<'AdvancedSearch'>
     }
 
     return (
-        <View style={{ flex: 1, gap: 10 }}>
+        <SafeAreaView style={ Layout.SafeArea }>
             <BackButton navigation={ navigation } text="Back to Login" />
             <KeyboardAwareScrollView
                 contentContainerStyle={{ paddingBottom: 15 }}
@@ -159,20 +161,22 @@ function AdvancedSearch({ navigation }: SearchStackScreenProps<'AdvancedSearch'>
                 </View>
                 <View>
                     <Text>In Collection Only?</Text>
-                    //Multi choice
+                    {/* Switch box */}
                 </View>
             </KeyboardAwareScrollView>
-            <View>
-                <PressableButton onPress={ navigateToSearch }>
-                    <Text>Search</Text>
-                    <FontAwesome5
-                        name="search"
-                        size={ 24 }
-                        color="white"
-                    />
-                </PressableButton>
-            </View>
-        </View>
+
+            <PressableButton
+                onPress={ navigateToSearch }
+                style={{ flexDirection: 'row', gap: 10, paddingVertical: 10, marginBottom: 10 }}
+            >
+                <Text style={ styles.searchText }>Search</Text>
+                <FontAwesome5
+                    name="search"
+                    size={ 24 }
+                    color="white"
+                />
+            </PressableButton>
+        </SafeAreaView>
     );
 }
 
@@ -180,7 +184,8 @@ function AdvancedSearch({ navigation }: SearchStackScreenProps<'AdvancedSearch'>
 export default AdvancedSearch;
 
 const styles = StyleSheet.create({
-    buttonText: {
+    searchText: {
+        color     : 'white',
         fontFamily: Fonts.Standard,
         fontSize  : FontSize.Medium
     }

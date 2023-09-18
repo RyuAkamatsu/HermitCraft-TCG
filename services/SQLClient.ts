@@ -9,6 +9,10 @@ db.exec(
 );
 
 db.transaction(tx => {
+    tx.executeSql('DROP TABLE IF EXISTS cards');
+});
+
+db.transaction(tx => {
     tx.executeSql(
         'CREATE TABLE IF NOT EXISTS cards' +
         ' (id TEXT PRIMARY KEY,' +
@@ -30,6 +34,16 @@ db.transaction(tx => {
         ' errata TEXT, ' +
         ' numberOwned INTEGER, ' +
         ' lastModified INTEGER)'
+    );
+});
+
+db.transaction(tx => {
+    tx.executeSql(
+        'INSERT INTO cards (id, name, cardType, itemType, rarity, description, health,' +
+        'primaryAttackName, primaryAttackCost, primaryAttackPower, primaryAttackDescription,' +
+        'secondaryAttackName, secondaryAttackCost, secondaryAttackPower, secondaryAttackDescription, tags, errata, numberOwned, lastModified)' +
+        'values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        ['BEEF-C', 'VintageBeef', 'Hermit', 'Balanced', 'Common', '', 250, 'Hey Guys!', ['ANY'], 30, '', 'Mindcrack', ['BAL', 'BAL'], 80, '', [], [], 0, new Date()]
     );
 });
 

@@ -18,7 +18,7 @@ import {
 function HermitType({ navigation }: SearchStackScreenProps<'HermitType'>) {
 
     return (
-        <SafeAreaView style={ [Layout.SafeArea, { gap: 20, justifyContent: 'center' }] }>
+        <SafeAreaView style={ [Layout.SafeArea, { justifyContent: 'center' }] }>
             <BackButton
                 navigation={ navigation }
                 color="white"
