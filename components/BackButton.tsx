@@ -1,23 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { PressableButton } from './common';
-
-import { Colors, Fonts, FontSize } from '../constants';
+import { useNavigation } from '@react-navigation/native';
+import { Text } from './common/Themed';
+import { Fonts, FontSize } from '../constants/Fonts';
+import Colors from '../constants/Colors';
 
 interface Props {
-    navigation: any,
+    navigateTo?: string,
     text?: string,
     color?: string
 }
 
-function BackButton({ navigation, text, color = Colors.TextColor } : Props) {
+function BackButton({ navigateTo, text = 'Back', color = Colors.TextColor } : Props) {
+
+    const navigation = useNavigation();
 
     return (
         <View style={ styles.iconContainer }>
-            <PressableButton
-                onPress={ () => navigation.goBack(null) }
-                style={{ flexDirection: 'row', alignSelf: 'center' }}
+            <Pressable
+                onPress={ () => (navigateTo ? navigation.navigate(navigateTo) : navigation.goBack()) }
+                style={ ({ pressed }) => ({ opacity: pressed ? 0.5 : 1, flexDirection: 'row', alignSelf: 'center' }) }
             >
                 <MaterialIcons
                     name="arrow-left"
@@ -25,8 +28,8 @@ function BackButton({ navigation, text, color = Colors.TextColor } : Props) {
                     color={ color }
                     style={{ marginTop: -3 }}
                 />
-                { text && <Text style={{ ...styles.backText, color }}>{ text }</Text> }
-            </PressableButton>
+                <Text style={{ ...styles.backText, color }}>{ text }</Text>
+            </Pressable>
         </View>
     );
 }
@@ -38,11 +41,9 @@ const styles = StyleSheet.create({
         alignSelf  : 'flex-start',
     },
     backText: {
-        fontFamily  : Fonts.Standard,
-        fontSize    : FontSize.Medium,
-        paddingRight: 15,
-        paddingVertical: 10
+        fontFamily: Fonts.Standard,
+        fontSize  : FontSize.Small
     },
 });
 
-export default BackButton;
+export { BackButton };
