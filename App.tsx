@@ -8,7 +8,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { store } from './slices/store';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
-import { loadFonts, cacheImages } from './hooks/useCachedResources';
+import { loadFonts, cacheImages, importDataFromCSV } from './hooks/useCachedResources';
 
 export default function App() {
 
@@ -27,6 +27,7 @@ export default function App() {
                 await Promise.all([
                     loadFonts(),
                     cacheImages(images),
+                    importDataFromCSV(),
                     new Promise(resolve => {
                         setTimeout(
                             resolve,

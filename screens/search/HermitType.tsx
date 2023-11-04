@@ -11,16 +11,15 @@ import {
     Colors,
     Fonts,
     FontSize,
-    ITEM_TYPES, Layout,
+    Layout,
+    ITEM_TYPES,
 } from '../../constants';
-
 
 function HermitType({ navigation }: SearchStackScreenProps<'HermitType'>) {
 
     return (
         <SafeAreaView style={ [Layout.SafeArea, { justifyContent: 'center' }] }>
             <BackButton
-                navigation={ navigation }
                 color="white"
                 text="Back"
             />

@@ -178,7 +178,7 @@ function Collection({ navigation }: RootTabScreenProps<'MyCollection'>) {
                 []
             );
 
-            const cardArray = collectionData.rows._array;
+            const cardArray = collectionData.rows._array ?? [];
 
             setHermitData(cardArray.filter(
                 (card: { cardType: string; cardQuantity: number; }) => card.cardType === 'Hermit' && (!showOwnedOnly || card.cardQuantity > 0)

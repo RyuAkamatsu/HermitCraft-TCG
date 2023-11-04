@@ -1,0 +1,119 @@
+Id,Name,Type,Rarity,Description,Tags,Errata
+INST-1,Instant Health,Health,Common,"User Heals +30HP.
+Can be used on active or AFK Hermits. Discard after use.",Single-use,
+INST-2,Instant Health II,Health,Rare,,Single-use,
+HEAL-1,Splash Potion of Healing,Health,Common,"Heals player's active and AFK Hermits +20HP.
+Discard after use.",Single-use,
+HEAL-2,Splash Potion of Healing II,Health,Rare,"Heals player's active and AFK Hermits +30HP.
+Discard after use.",Single-use,
+BED,Bed,Health,Ultra Rare,"Player sleeps for the next 2 turns. Can't attack. Restores full health.
+Can still draw and attach cards while sleeping.
+
+Discard after player wakes up.",Single-use,
+GAPPLE,Golden Apple,Health,Ultra Rare,Heal AFK Hermit for 100hp.,Single-use,
+BOW,Bow,Damage,Common,"Does +40HP damage to any opposing AFK Hermit.
+Discard after use.",Single-use,
+CHORUS,Chorus Fruit,Damage,Common,"Swap active Hermit with AFK Hermit at the end of the player's turn.
+Discard after use.",Single-use,
+IRONSWORD,Iron Sword,Damage,Common,"Does +20HP damage to opposing Hermit.
+Discard after use.",Single-use,
+SLOW,Potion of Slowness,Damage,Common,"Opponent must use their active Hermit's first attack on their next turn.
+Discard after use.","Single-use,Alter Ego",
+WEAKNESS,Potion of Weakness,Damage,Common,"Opponent's active Hermit type is now weak to your active Hermit's type for 3 turns.
+Discard after use.","Single-use,Alter Ego",
+TNT,TNT,Damage,Common,"Does +60HP damage to opposing Hermit. Also does +20HP damage to user.
+Discard after use.",Single-use,
+ANVIL,Anvil,Damage,Rare,"Do 30hp damage to your opponent's Hermit directly opposite your active Hermit on the board and 10hp damage to each of their Hermits below it.
+Discard after use.","Single-use,Alter Ego",
+BOMEN,Bad Omen,Luck,Rare,"All of your opponent's coin flips are tails for their next 3 turns.
+Can be removed with Milk Bucket.
+
+Discard after removed.
+
+","Single-use,Alter Ego",
+CMD,Command Block,Health,Rare,Attach to any active or AFK Hermit. Items attached to this Hermit become any type. This card can only be removed once the Hermit it's attached to is knocked out.,"Attach,Alter Ego",
+X-BOW,Crossbow,Health,Rare,Do 20hp damage to up to 3 Hermits of your choice. Can't damage the same Hermit more than once.,Single-use,
+D-SWORD,Diamond Sword,Health,Rare,"Does +40HP damage to opposing Hermit.
+Discard after use.",Single-use,
+EGG,Egg,Health,Rare,"After your attack, choose one of your opponent's AFK Hermits to make active. Flip a coin. If heads, also do 10hp damage to that Hermit.","Single-use,Alter Ego",
+G-AXE,Golden Axe,Health,Rare,Do 20hp damage for every item card attachecd to opposing active Hermit up to a maximum of 80hp,Single-use,
+LAVA,Lava Bucket,Damage,Rare,"BURNS the opposing Hermit
+Does an additional +20HP damage per turn until opponent is knocked out.
+
+Going AFK does not eliminate the BURN. Discard after use.",Single-use,
+POISON,Splash Potion of Poison,Damage,Rare,"POISONS the opposing Hermit.
+Does an additional +20HP damage per turn until opponent is knocked out.
+
+Going AFK does not eliminate the POISON. Discard after use.",Single-use,
+STRING,String,Item,Rare,Place on one of your opponent's empty item or effect slot. Opponent can no longer place cards in that slot.,"Attach,Alter Ego",
+TARGET,Target Block,Item,Rare,Choose one of your opponent's AFK Hermits to take all damage done during this turn.,"Attach,Alter Ego",
+TRIDENT,Trident,Damage,Rare,"Add 30hp damage at the end of your attack. Flip a coin. If heads, this card is returned to your hand.","Single-use,Alter Ego",
+WOLF,Wolf,Damage,Rare,Opponent takes +20HP damage every time user is attacked until user is knocked out.,Attach,
+N-SWORD,Netherite Sword,Damage,Ultra Rare,Does +60HP damage to opposing Hermit.,Attach,
+E-PEARL,Ender Pearl,Location,Common,Move your active Hermit and any attached cards to an open slot on your board. Subtract 10 health from this Hermit.,"Single-use,Alter Ego",
+L-ROD,Lightning Rod,Defensive,Common,Attach to any of your active or AFK Hermits. All damage done to you on your opponent's next turn is taken by the Hermit this card is attached to. Discard after damage is taken.,"Single-use,Alter Ego",
+MILK,Milk Bucket,Defensive,Common,"Stops POISON.
+Removes Bad Omen. Can be used on active or AFK Hermits. Discard after Use.
+
+Can also be attached to prevent POISON.
+
+Discard after user is knocked out.","Single-use,Attach",
+G-ARMOR,Gold Armor,Defensive,Common,Prevent up to 10hp damage taken.,Attach,
+I-ARMOR,Iron Armor,Defensive,Common,"Protects from the first +20HP damage taken.
+Discard after user is knocked out.",Attach,
+SHIELD,Shield,Defensive,Common,Prevent up to 60hp damage for 1 turn. Discard following any damage taken.,Attach,
+WATER,Water Bucket,Defensive,Common,"Stops BURN.
+Can be used on active or AFK Hermits. Discard after Use.
+
+Can also be attached to prevent BURN.
+
+Discard after user is knocked out.","Single-use,Attach",
+D-ARMOR,Diamond Armor,Defensive,Rare,Prevent up to 20hp damage taken. Also prevents damage to this Hermit from all effect cards.,Attach,
+INVIS,Invisibility Potion,Defensive,Rare,"Flip a Coin.
+If heads, no damage is done on opponent's next turn. If tails, double damage is done.
+
+Discard after use.",Single-use,
+TURTLE,Turtle Shell,Defensive,Rare,"Attach to any AFK Hermit. When that Hermit becomes active, it cannot take any damage during your opponent's first turn. Discard at the end of your opponent's first turn.","Attach,Alter Ego",
+ARMOR,Armor Stand,Defensive,Ultra Rare,Use like a Hermit card. Has 50hp. Can not attack. Can not attach cards to it. Opponent does not get a point when it's knocked out.,Alter Ego,
+CLOCK,Clock,Item,Ultra Rare,Opponent skips their next turn. They still draw a card and can make their active Hermit go AFK.,Single-use,
+LADDER,Ladder,Hermit,Ultra Rare,"Before attacking, swap your active Hermit card with one of your adjacent AFK Hermits. All cards attached to both Hermits, including health, remain in place. Active and AFK status does not change.",Single-use,
+N-ARMOR,Netherite Armor,Defensive,Ultra Rare,Prevent up to 20hp damage taken. Also prevents damage to this Hermit from all effect cards. Opponent can not make this Hermit go AFK.,Attach,
+TOTEM,Totem,Defensive,Ultra Rare,"Player recovers +10HP after being knocked out and remains in battle.
+Discard after use.",Attach,
+COMP,Composter,Hand,Common,"Discard 2 cards in your hand. Draw 2 cards,
+Discard after use.",Single-use,
+FIRE,Fire Charge,Hand,Common,Discard 1 attached item or effect card from your active or AFK Hermits. You can use another single use effect card this turn.,"Single-use,Alter Ego",
+FANDS,Flint & Steel,Hand,Common,"Discard your hand. Draw 3 cards.
+Discard after use.",Single-use,
+LEAD,Lead,Item,Common,"Move 1 of active Hermit's attached item cards to any AFK Hermit.
+Receiving Hermit must have open item card slot.
+
+Discard after use.",Single-use,
+PISTON,Piston,Item,Common,Move 1 of your attached item cards to an adjacent active or AFK Hermit row.,"Single-use,Alter Ego",
+CHEST,Chest,Item,Rare,"Look through your discard pile and pick 1 card to return to your hand. Can't pick ""Clock"".",Single-use,
+EMERALD,Emerald,Item,Rare,Steal or swap attached effect card of your opponent's active Hermit.,Single-use,
+SPY,Spyglass,Hand,Rare,"Look at opponent's hand. Flip a coin. If heads, opponent chooses 1 of those cards to discard.",Single-use,
+ROD,Fishing Rod,Hand,Ultra Rare,"Player draws 2 cards from deck.
+Discard after use.",Single-use,
+BINDING,Curse of Binding,Hermit,Common,"Opposing active Hermit cannot go AFK on the following turn.
+Discard after use.",Single-use,
+VANISHING,Curse of Vanishing,Discard,Common,"Opponent is forced to discard their active Hermit's attached effect card.
+Discard after use.",Single-use,
+THORNS,Thorns,Damage,Common,"Opposing Hermit takes +10HP damage after attack.
+Discard after user is knocked out.",Attach,
+EFFICIENCY,Efficiency,Item,Rare,"User can execute attack without having the necessary item card attached.
+Current turn only. Discard after use.",Single-use,
+KNOCKBACK,Knockback,Hermit,Rare,"Opposing Hermit goes AFK following user's attack.
+Opponent chooses replacement.
+
+Can only be used if opponent has at least 1 AFK Hermit. Discard after use.",Single-use,
+LOOTING,Looting,Hermit,Rare,"When opponent is knocked out by the Hermit this card is attached to, pick 2 of its item cards and add them to your hand.",Attach,
+LOYALTY,Loyalty,Item,Rare,"When the Hermit this card is attached to is knocked out, choose 1 of its attached item cards and return it to your hand.",Attach,
+THORNS-2,Thorns II,Damage,Rare,"Opposing Hermit takes 20HP damage after attack.
+Discard after user is knocked out.","Attach,Alter Ego",
+FORTUNE,Fortune,Luck,Ultra Rare,"Any coin flip(s) necessary for user's attack are not needed and ""heads"" is assumed.
+Discard after use.",Attach,
+MENDING,Mending,Hermit,Ultra Rare,Move any attached effect card from your active Hermit to any AFK Hermit. ,Attach,
+SWEEPING,Sweeping Edge,Hermit,Ultra Rare,Opponent must discard any effect cards attached to their active Hermit and adjacent Hermits.,"Attach,Alter Ego",
+THORNS-3,Thorns III,Damage,Ultra Rare,"Opposing Hermit takes 30HP damage after attack.
+Discard after user is knocked out.","Attach,Alter Ego",

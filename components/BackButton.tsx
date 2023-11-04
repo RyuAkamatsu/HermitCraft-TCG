@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Pressable } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { Text } from './common/Themed';
-import { Fonts, FontSize } from '../constants/Fonts';
-import Colors from '../constants/Colors';
+import { Colors, Fonts, FontSize } from '../constants';
 
 interface Props {
     navigateTo?: string,
@@ -46,4 +44,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export { BackButton };
+export default BackButton;

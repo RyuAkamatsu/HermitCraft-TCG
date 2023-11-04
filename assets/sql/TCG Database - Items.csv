@@ -1,0 +1,21 @@
+Id,Name,Type,Rarity
+BAL,Balanced,Balanced,Common
+BAL-2,Balanced x2,Balanced,Rare
+BUI,Builder,Builder,Common
+BUI-2,Builder x2,Builder,Rare
+EXP,Explorer,Explorer,Common
+EXP-2,Explorer x2,Explorer,Rare
+FAR,Farm,Farm,Common
+FAR-2,Farm x2,Farm,Rare
+MIN,Miner,Miner,Common
+MIN-2,Miner x2,Miner,Rare
+PRA,Prankster,Prankster,Common
+PRA-2,Prankster x2,Prankster,Rare
+PVP,PvP,PvP,Common
+PVP-2,PvP x2,PvP,Rare
+RED,Redstone,Redstone,Common
+RED-2,Redstone x2,Redstone,Rare
+SPE,Speedrunner,Speedrunner,Common
+SPE-2,Speedrunner x2,Speedrunner,Rare
+TER,Terraformer,Terraformer,Common
+TER-2,Terraformer x2,Terraformer,Rare
