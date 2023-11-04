@@ -1,7 +1,7 @@
 import * as Font from 'expo-font';
 import { FontAwesome } from '@expo/vector-icons';
 import { Asset } from 'expo-asset';
-import FileSystem from 'expo-file-system';
+import { getInfoAsync } from 'expo-file-system';
 import csv from 'csvtojson';
 import { executeTransaction } from '../services/SQLClient';
 
@@ -19,11 +19,11 @@ export function cacheImages(images: any[]) {
 
 export async function importDataFromCSV() {
 
-    const hermitCSV = require('./assets/sql/TCG Database - Hermits.csv');
-    const hermitFileInfo = await FileSystem.getInfoAsync(hermitCSV.localUri);
+    const hermitCSV = await Asset.fromModule(require('../assets/sql/Hermits.csv')).downloadAsync();
+    const hermitFileInfo = await getInfoAsync(hermitCSV.localUri);
 
     csv({ output: 'csv' })
-        .fromString(hermitCSV)
+        .fromFile('../assets/sql/Hermits.csv')
         .then(async csvRow => {
 
             for (const row of csvRow) {
@@ -63,11 +63,11 @@ export async function importDataFromCSV() {
             }
         });
 
-    const effectCSV = require('./assets/sql/TCG Database - Effects.csv');
-    const effectFileInfo = await FileSystem.getInfoAsync(effectCSV.localUri);
+    const effectCSV = await Asset.fromModule(require('../assets/sql/Effects.csv')).downloadAsync();
+    const effectFileInfo = await getInfoAsync(effectCSV.localUri);
 
     csv({ output: 'csv' })
-        .fromString(effectCSV)
+        .fromFile('../assets/sql/Effects.csv')
         .then(async csvRow => {
 
             for (const row of csvRow) {
@@ -96,11 +96,11 @@ export async function importDataFromCSV() {
             }
         });
 
-    const itemCSV = require('./assets/sql/TCG Database - Items.csv');
-    const itemFileInfo = await FileSystem.getInfoAsync(itemCSV.localUri);
+    const itemCSV = await Asset.fromModule(require('../assets/sql/Items.csv')).downloadAsync();
+    const itemFileInfo = await getInfoAsync(itemCSV.localUri);
 
     csv({ output: 'csv' })
-        .fromString(itemCSV)
+        .fromFile('../assets/sql/Items.csv')
         .then(async csvRow => {
 
             for (const row of csvRow) {
