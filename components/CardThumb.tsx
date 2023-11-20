@@ -9,17 +9,17 @@ import { executeTransaction } from '../services/SQLClient';
 import { Colors } from '../constants';
 
 interface Props {
-    cardInfo: any
+    cardInfo: any,
+    showCardModal: boolean,
+    setShowCardModal: (showModal: boolean) => void
 }
 
-function CardThumb({ cardInfo }: Props) {
-
-    const [showCardModal, setShowCardModal] = useState(false);
-    const [quantity, setQuantity] = useState(cardInfo.Quantity);
+function CardThumb({ cardInfo, showCardModal, setShowCardModal }: Props) {
+    const [quantity, setQuantity] = useState(cardInfo?.numberOwned | 0);
 
     useEffect(() => {
         async function updateDBQuantity() {
-            await executeTransaction('UPDATE myCollection SET cardQuantity = ? WHERE id = ?', [cardInfo.Quantity, cardInfo.Id]);
+            await executeTransaction('UPDATE cards SET numberOwned = ? WHERE id = ?', [quantity, cardInfo?.id]);
         }
         updateDBQuantity();
     }, [quantity]);
@@ -38,21 +38,16 @@ function CardThumb({ cardInfo }: Props) {
                 style={ ({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }] }
                 onPress={ () => setShowCardModal(!showCardModal) }
             >
-                <Text>{ cardInfo.Code }</Text>
-                <Image
+                <Text>{ cardInfo?.name }</Text>
+                {/* <Image
                     source={{ uri: cardInfo.uri }}
                     style={ [
                         styles.imageStyle,
-                        { opacity: cardInfo.quantity > 0 ? 1 : 0.7 }
+                        { opacity: cardInfo.numberOwned > 0 ? 1 : 0.7 }
                     ] }
-                />
+                /> */}
             </Pressable>
             { quantityChanger }
-            <FullCardView
-                isVisible={ showCardModal }
-                cardInfo={ cardInfo }
-                onHide={ () => setShowCardModal(false) }
-            />
         </View>
     );
 }

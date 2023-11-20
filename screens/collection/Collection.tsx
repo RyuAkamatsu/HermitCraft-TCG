@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FlatList, SectionList, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { TabView } from 'react-native-tab-view';
 import { useFocusEffect } from '@react-navigation/native';
@@ -109,6 +109,8 @@ function Collection({ navigation }: RootTabScreenProps<'MyCollection'>) {
     const [itemData, setItemData] = useState([]);
     const [itemSort, setItemSort] = useState('name');
 
+    const [showCardModal, setShowCardModal] = useState(false);
+
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
         { key: 'hermits', title: 'Hermits' },
@@ -171,27 +173,46 @@ function Collection({ navigation }: RootTabScreenProps<'MyCollection'>) {
     };
 
 
-    useFocusEffect(() => {
-        async function getData() {
-            const collectionData = await executeTransaction(
-                'SELECT * FROM cards INNER JOIN myCollection ON myCollection.cardId = cards.id',
-                []
-            );
+    useFocusEffect(
+        useCallback(() => {
+            async function getData() {
+                const collectionData = await executeTransaction(
+                    'SELECT * FROM cards',
+                    []
+                );
 
-            const cardArray = collectionData.rows._array ?? [];
+                const cardArray = collectionData.rows._array ?? [];
 
-            setHermitData(cardArray.filter(
-                (card: { cardType: string; cardQuantity: number; }) => card.cardType === 'Hermit' && (!showOwnedOnly || card.cardQuantity > 0)
-            ));
-            setEffectData(cardArray.filter(
-                (card: { cardType: string; cardQuantity: number; }) => card.cardType === 'Effect' && (!showOwnedOnly || card.cardQuantity > 0)
-            ));
-            setItemData(cardArray.filter(
-                (card: { cardType: string; cardQuantity: number; }) => card.cardType === 'Item' && (!showOwnedOnly || card.cardQuantity > 0)
-            ));
-        }
-        getData();
-    });
+                const hermits = [];
+                const effects = [];
+                const items = [];
+
+                for (const card of cardArray) {
+                    if (!showOwnedOnly || card.numberOwned > 0) {
+                        switch (card.cardType) {
+                            case 'Hermit':
+                                hermits.push(card);
+                                break;
+                            case 'Effect':
+                                effects.push(card);
+                                break;
+                            case 'Item':
+                                items.push(card);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+
+                setHermitData(hermits);
+                setEffectData(effects);
+                setItemData(items);
+            }
+
+            getData();
+        }, [])
+    );
 
     return (
         <View>
@@ -202,12 +223,24 @@ function Collection({ navigation }: RootTabScreenProps<'MyCollection'>) {
                     callback={ () => setShowOwnedOnly(showOwnedOnly) }
                 />
             </View>
-            <TabView
+            <View style={{ flex: 1, backgroundColor: '#ff4081' }}>
+                <CardThumb
+                    cardInfo={ hermitData.length > 0 ? hermitData[0] : null }
+                    showCardModal={ showCardModal }
+                    setShowCardModal={ setShowCardModal }
+                />
+            </View>
+            {/* <TabView
                 navigationState={{ index, routes }}
                 renderScene={ renderScene }
                 onIndexChange={ setIndex }
                 initialLayout={{ width: layout.width }}
-            />
+            /> */}
+            {/* <FullCardView
+                isVisible={ showCardModal }
+                cardInfo={ cardInfo }
+                onHide={ () => setShowCardModal(false) }
+            /> */}
         </View>
     );
 }

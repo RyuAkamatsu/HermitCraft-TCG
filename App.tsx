@@ -36,6 +36,7 @@ export default function App() {
                     })
                 ])
                     .then(() => {
+                        console.log('Loading Complete');
                         setIsLoadingComplete(true);
                     });
             } catch (e) {
@@ -67,7 +68,7 @@ export default function App() {
                 </View>
             ) : (
                 <SafeAreaProvider>
-                    <Navigation colorScheme={ colorScheme } />
+                    <Navigation />
                     <StatusBar />
                 </SafeAreaProvider>
             ) }

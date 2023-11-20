@@ -10,6 +10,7 @@ import HermitType from '../screens/search/HermitType';
 import SearchHome from '../screens/search/SearchHome';
 import AdvancedSearch from '../screens/search/AdvancedSearch';
 import SearchResults from '../screens/search/SearchResults';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function Navigation() {
     return (
@@ -28,9 +29,34 @@ function RootNavigator() {
 
     return (
         <Tabs.Navigator
-            screenOptions={{
-                headerShown: false
-            }}
+            screenOptions={ ({ route }) => ({
+                headerShown: false,
+                tabBarIcon : ({ focused, color, size }) => {
+                    let iconName;
+
+                    switch (route.name) {
+                        case 'Search':
+                            iconName = 'search';
+                            break;
+                        case 'MyCollection':
+                            iconName = 'boxes';
+                            break;
+                        case 'MyDecks':
+                            iconName = 'box-open';
+                            break;
+                        case 'Information':
+                            iconName = 'info-circle';
+                            break;
+                        default:
+                            iconName = null;
+                    }
+
+                    // You can return any component that you like here!
+                    return <FontAwesome5 name={ iconName } size={ size } color={ color } />;
+                },
+                tabBarActiveTintColor  : 'cyan',
+                tabBarInactiveTintColor: 'gray',
+            }) }
         >
             <Tabs.Screen name="Search" component={ SearchNavigator } />
             <Tabs.Screen name="MyCollection" component={ Collection } />

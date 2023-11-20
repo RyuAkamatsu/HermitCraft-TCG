@@ -9,10 +9,6 @@ db.exec(
 );
 
 db.transaction(tx => {
-    tx.executeSql('DROP TABLE IF EXISTS cards');
-});
-
-db.transaction(tx => {
     tx.executeSql(
         'CREATE TABLE IF NOT EXISTS cards' +
         ' (id TEXT PRIMARY KEY,' +
@@ -56,23 +52,24 @@ db.transaction(tx => {
     );
 });
 
-db.transaction(tx => {
-    tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS myCollection' +
-        ' (id INTEGER PRIMARY KEY AUTOINCREMENT,' +
-        ' cardId TEXT NOT NULL REFERENCES cards(id),' +
-        ' cardQuantity INTEGER DEFAULT 0)'
-    );
-});
-
 const executeTransaction = async (sqlQuery: string, args: (any)[]) => new Promise<any>((resolve, reject) => {
+    console.log('Run transaction: ', sqlQuery);
+    console.log('Args: ', args);
+
     db.transaction(
         tx => {
             tx.executeSql(
                 sqlQuery,
                 args,
-                (t: any, success: any) => { resolve(success); },
-                (t, error) => { reject(error); return false; }
+                (t: any, success: any) => {
+                    console.info('success');
+                    resolve(success);
+                },
+                (t, error) => {
+                    console.error('sql error: ', error.message);
+                    reject(error);
+                    return false;
+                }
             );
         },
     );

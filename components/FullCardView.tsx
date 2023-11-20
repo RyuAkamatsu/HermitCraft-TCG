@@ -16,11 +16,11 @@ interface Props {
 
 function FullCardView({ isVisible, cardInfo, onHide }: Props) {
 
-    const [quantity, setQuantity] = useState(cardInfo.Quantity);
+    const [quantity, setQuantity] = useState(cardInfo?.numberOwned | 0);
 
     useEffect(() => {
         async function updateDBQuantity() {
-            await executeTransaction('UPDATE myCollection SET cardQuantity = ? WHERE id = ?', [cardInfo.Quantity, cardInfo.Id]);
+            await executeTransaction('UPDATE cards SET numberOwned = ? WHERE id = ?', [quantity, cardInfo?.id]);
         }
         updateDBQuantity();
     }, [quantity]);
@@ -40,14 +40,14 @@ function FullCardView({ isVisible, cardInfo, onHide }: Props) {
             onBackdropPress={ onHide }
         >
             <View style={ styles.container }>
-                <Text>{ cardInfo.Name }</Text>
-                <Image
+                <Text>{ cardInfo.name }</Text>
+                {/* <Image
                     source={{ uri: cardInfo.uri }}
                     style={ [
                         styles.imageStyle,
                         { opacity: cardInfo.quantity > 0 ? 1 : 0.7 }
                     ] }
-                />
+                /> */}
                 { quantityChanger }
             </View>
         </Modal>
