@@ -21,7 +21,10 @@ function CardThumb({ cardInfo, showCardModal, setShowCardModal }: Props) {
         async function updateDBQuantity() {
             await executeTransaction('UPDATE cards SET numberOwned = ? WHERE id = ?', [quantity, cardInfo?.id]);
         }
-        updateDBQuantity();
+
+        if (quantity !== cardInfo.numberOwned) {
+            updateDBQuantity();
+        }
     }, [quantity]);
 
     const quantityChanger = useMemo(() => (
@@ -56,7 +59,6 @@ export default CardThumb;
 
 const styles = StyleSheet.create({
     container: {
-        flex           : 1,
         backgroundColor: Colors.Grey50
     },
     imageStyle: {

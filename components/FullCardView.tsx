@@ -15,14 +15,16 @@ interface Props {
 }
 
 function FullCardView({ isVisible, cardInfo, onHide }: Props) {
-
     const [quantity, setQuantity] = useState(cardInfo?.numberOwned | 0);
 
     useEffect(() => {
         async function updateDBQuantity() {
             await executeTransaction('UPDATE cards SET numberOwned = ? WHERE id = ?', [quantity, cardInfo?.id]);
         }
-        updateDBQuantity();
+
+        if (quantity !== cardInfo.numberOwned) {
+            updateDBQuantity();
+        }
     }, [quantity]);
 
     const quantityChanger = useMemo(() => (

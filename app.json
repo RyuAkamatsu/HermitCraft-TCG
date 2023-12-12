@@ -1,6 +1,5 @@
 {
   "expo": {
-    "jsEngine": "hermes",
     "name": "Hermitcraft-TCG",
     "slug": "hermitcraft-tcg",
     "version": "1.0.0",

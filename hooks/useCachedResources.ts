@@ -18,19 +18,19 @@ export function cacheImages(images: any[]) {
 
 export async function importDataFromCSV() {
 
-    const hermitCSV = await Asset.fromModule(require('../assets/sql/Hermits.csv')).downloadAsync();
+    const hermitCSV = await Asset.fromModule(require('../assets/sql/Hermits.tsv')).downloadAsync();
     const hermitFileInfo = await FileSystem.getInfoAsync(hermitCSV.localUri);
     const hermitFileModTime = (hermitFileInfo?.modificationTime | 0) * 1000;
     const hermitData = await FileSystem.readAsStringAsync(hermitCSV.localUri);
     const [, ...hermitRest] = hermitData.split(/\r/);
 
     // console.log(hermitRest);
-
-    for (const row of hermitRest) {
-        // console.log(`${index} - ${row}`);
+    const row = hermitRest[0];
+    // for (const row of hermitRest) {
+        console.log(`${row}`);
 
         const [Id, Name, Type, Rarity, Health, PrimaryAtkName, PrimaryAtkValue, PrimaryAtkCost, PrimaryAtkDescription,
-            SecondaryAtkName, SecondaryAtkCost, SecondaryAtkValue, SecondaryAtkDescription, Tags] = row.split(',');
+            SecondaryAtkName, SecondaryAtkCost, SecondaryAtkValue, SecondaryAtkDescription, Tags] = row.split('\t');
 
         const card = await executeTransaction('SELECT * FROM cards WHERE id = ?', [Id]);
 
@@ -38,7 +38,9 @@ export async function importDataFromCSV() {
         // console.log('existingCard time', existingCard?.lastModified);
 
         if (!existingCard) {
-            // console.log('Insert card: ', Id);
+            console.log('Insert card: ', Id);
+
+            console.log('Testing:', JSON.stringify(SecondaryAtkCost));
 
             await executeTransaction(
                 `INSERT INTO cards (id, name, cardType, itemType, rarity, description, health,
@@ -73,9 +75,9 @@ export async function importDataFromCSV() {
 
             // console.log('Updated: ', Id);
         }
-    }
+    // }
 
-    const effectCSV = await Asset.fromModule(require('../assets/sql/Effects.csv')).downloadAsync();
+    /* const effectCSV = await Asset.fromModule(require('../assets/sql/Effects.tsv')).downloadAsync();
     const effectFileInfo = await FileSystem.getInfoAsync(effectCSV.localUri);
     const effectFileModTime = (effectFileInfo?.modificationTime | 0) * 1000;
     const effectData = await FileSystem.readAsStringAsync(effectCSV.localUri);
@@ -111,7 +113,7 @@ export async function importDataFromCSV() {
         }
     }
 
-    const itemCSV = await Asset.fromModule(require('../assets/sql/Items.csv')).downloadAsync();
+    const itemCSV = await Asset.fromModule(require('../assets/sql/Items.tsv')).downloadAsync();
     const itemFileInfo = await FileSystem.getInfoAsync(itemCSV.localUri);
     const itemFileModTime = (itemFileInfo?.modificationTime | 0) * 1000;
     const itemData = await FileSystem.readAsStringAsync(itemCSV.localUri);
@@ -138,5 +140,5 @@ export async function importDataFromCSV() {
                 [Id, Name, Type, Rarity, new Date().getTime(), Id]
             );
         }
-    }
+    } */
 }

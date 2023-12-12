@@ -9,6 +9,10 @@ db.exec(
 );
 
 db.transaction(tx => {
+    tx.executeSql('DROP TABLE cards');
+});
+
+db.transaction(tx => {
     tx.executeSql(
         'CREATE TABLE IF NOT EXISTS cards' +
         ' (id TEXT PRIMARY KEY,' +
@@ -53,8 +57,8 @@ db.transaction(tx => {
 });
 
 const executeTransaction = async (sqlQuery: string, args: (any)[]) => new Promise<any>((resolve, reject) => {
-    console.log('Run transaction: ', sqlQuery);
-    console.log('Args: ', args);
+    // console.log('Run transaction: ', sqlQuery);
+    // console.log('Args: ', args);
 
     db.transaction(
         tx => {
@@ -62,7 +66,7 @@ const executeTransaction = async (sqlQuery: string, args: (any)[]) => new Promis
                 sqlQuery,
                 args,
                 (t: any, success: any) => {
-                    console.info('success');
+                    // console.info('success');
                     resolve(success);
                 },
                 (t, error) => {
