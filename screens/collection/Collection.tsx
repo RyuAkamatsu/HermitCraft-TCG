@@ -111,8 +111,6 @@ function Collection({ navigation }: RootTabScreenProps<'MyCollection'>) {
     const [itemData, setItemData] = useState([]);
     const [itemSort, setItemSort] = useState('name'); */
 
-    const [showCardModal, setShowCardModal] = useState(false);
-
     const [index, setIndex] = React.useState(0);
     /* const [routes] = React.useState([
         { key: 'hermits', title: 'Hermits' },
@@ -216,19 +214,6 @@ function Collection({ navigation }: RootTabScreenProps<'MyCollection'>) {
 
     return (
         <View style={{ flex: 1, paddingTop: insets.top, backgroundColor: '#ff4081' }}>
-            { hermitData?.map(card => (
-                <CardThumb
-                    key={ `card_${card?.Id}` }
-                    cardInfo={ card }
-                    showCardModal={ showCardModal }
-                    setShowCardModal={ setShowCardModal }
-                />
-            )) }
-        </View>
-    );
-
-    /* return (
-        <View>
             <View>
                 <SwitchBlock
                     label="Only show owned"
@@ -236,26 +221,27 @@ function Collection({ navigation }: RootTabScreenProps<'MyCollection'>) {
                     callback={ () => setShowOwnedOnly(showOwnedOnly) }
                 />
             </View>
-            <View style={{ flex: 1, backgroundColor: '#ff4081' }}>
-                { hermitData && hermitData.length > 0 && (
+            <View style={{ flex: 3, flexDirection: 'row' }}>
+                { hermitData?.map(card => (
                     <CardThumb
-                        cardInfo={ hermitData[0] }
-                        showCardModal={ showCardModal }
-                        setShowCardModal={ setShowCardModal }
+                        key={ `card_${card?.Id}` }
+                        cardInfo={ card }
                     />
-                ) }
+                )) }
             </View>
+        </View>
+    );
+
+    /* return (
+        <View>
+
             <TabView
                 navigationState={{ index, routes }}
                 renderScene={ renderScene }
                 onIndexChange={ setIndex }
                 initialLayout={{ width: layout.width }}
             />
-            <FullCardView
-                isVisible={ showCardModal }
-                cardInfo={ cardInfo }
-                onHide={ () => setShowCardModal(false) }
-            />
+
         </View>
     ); */
 }

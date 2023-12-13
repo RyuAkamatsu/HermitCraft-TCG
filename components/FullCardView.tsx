@@ -6,26 +6,21 @@ import { QuantityChanger } from './common';
 
 import { executeTransaction } from '../services/SQLClient';
 
-import { Colors } from '../constants';
+import { Colors, Fonts, FontSize } from '../constants';
 
 interface Props {
     isVisible: boolean,
     cardInfo: any
-    onHide: () => void
+    onHide: () => void,
+    setQuantity: (value: number) => void
 }
 
-function FullCardView({ isVisible, cardInfo, onHide }: Props) {
-    const [quantity, setQuantity] = useState(cardInfo?.numberOwned | 0);
+function FullCardView({ isVisible, cardInfo, onHide, setQuantity }: Props) {
+    let quantity = cardInfo?.numberOwned | 0;
 
     useEffect(() => {
-        async function updateDBQuantity() {
-            await executeTransaction('UPDATE cards SET numberOwned = ? WHERE id = ?', [quantity, cardInfo?.id]);
-        }
-
-        if (quantity !== cardInfo.numberOwned) {
-            updateDBQuantity();
-        }
-    }, [quantity]);
+        quantity = cardInfo?.numberOwned | 0;
+    }, [cardInfo?.numberOwned]);
 
     const quantityChanger = useMemo(() => (
         <QuantityChanger
@@ -42,7 +37,11 @@ function FullCardView({ isVisible, cardInfo, onHide }: Props) {
             onBackdropPress={ onHide }
         >
             <View style={ styles.container }>
-                <Text>{ cardInfo.name }</Text>
+                <View style={{ flexDirection: 'row', paddingVertical: 10 }}>
+                    <Text style={{ flex: 1, textAlign: 'center', fontFamily: Fonts.Standard, fontSize: FontSize.Exclamation }}>
+                        { cardInfo?.name }
+                    </Text>
+                </View>
                 {/* <Image
                     source={{ uri: cardInfo.uri }}
                     style={ [
@@ -50,6 +49,9 @@ function FullCardView({ isVisible, cardInfo, onHide }: Props) {
                         { opacity: cardInfo.quantity > 0 ? 1 : 0.7 }
                     ] }
                 /> */}
+                <View>
+                    
+                </View>
                 { quantityChanger }
             </View>
         </Modal>
@@ -61,7 +63,8 @@ export default FullCardView;
 const styles = StyleSheet.create({
     container: {
         flex           : 1,
-        backgroundColor: Colors.Grey50
+        backgroundColor: Colors.CardBack,
+        margin: 10
     },
     imageStyle: {
 

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import PressableButton from './PressableButton';
+import { Fonts, FontSize } from '../../constants';
 
 interface Props {
     quantity: number,
@@ -38,6 +39,7 @@ function QuantityChanger(props: Props) {
             <PressableButton
                 onPress={ () => changeQuantity(-step) }
                 disabled={ quantity === min }
+                style={{ height: 40, width: 40 }}
             >
                 <FontAwesome5
                     name="minus"
@@ -45,10 +47,13 @@ function QuantityChanger(props: Props) {
                     color="white"
                 />
             </PressableButton>
-            <Text>{ quantity }</Text>
+            <Text style={{ marginTop: 5, paddingHorizontal: 10, textAlignVertical: 'center', fontFamily: Fonts.Standard, fontSize: FontSize.XLarge }}>
+                { quantity }
+            </Text>
             <PressableButton
                 onPress={ () => changeQuantity(step) }
                 disabled={ quantity === max }
+                style={{ height: 40, width: 40 }}
             >
                 <FontAwesome5
                     name="plus"
@@ -66,6 +71,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection : 'row',
         marginVertical: 10,
-        gap           : 5
+        gap           : 5,
+        alignSelf     : 'center',
     }
 });

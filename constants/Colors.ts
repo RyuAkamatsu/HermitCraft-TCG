@@ -7,6 +7,7 @@ export default {
     TextColor  : '#454545',
     ButtonColor: '#36a9ae',
     BorderColor: '#000',
+    CardBack   : '#ded493',
 
     SuccessColor         : '#28a745',
     SecondarySuccessColor: '#cef3d7',
